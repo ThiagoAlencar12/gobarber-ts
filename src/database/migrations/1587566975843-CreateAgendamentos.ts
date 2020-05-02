@@ -9,19 +9,18 @@ export default class CreateAgendamentos1587566975843
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
             name: 'provider',
             type: 'varchar',
-            isNullable: false,
           },
           {
             name: 'date',
             type: 'timestamp',
-            isNullable: false,
           },
           {
             name: 'created_at',

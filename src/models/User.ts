@@ -12,10 +12,10 @@ class User {
   id: string;
 
   @Column()
-  provider: string;
+  name: string;
 
   @Column()
-  name: string;
+  email: string;
 
   @Column()
   password: string;

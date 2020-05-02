@@ -15,7 +15,7 @@ agendamentoRouter.get('/', async (request, response) => {
 
 agendamentoRouter.post('/', async (request, response) => {
   try {
-    const { provider, date } = request.body;
+    const { provider_id, date } = request.body;
 
     const dataParsed = parseISO(date);
 
@@ -23,7 +23,7 @@ agendamentoRouter.post('/', async (request, response) => {
 
     const agendamento = await createAgendamento.execute({
       date: dataParsed,
-      provider,
+      provider_id,
     });
 
     return response.json(agendamento);
