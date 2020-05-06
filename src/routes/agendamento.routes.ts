@@ -4,9 +4,14 @@ import { getCustomRepository } from 'typeorm';
 import AgendamentoRepository from '../repositories/AgendamentoRepository';
 import CreateAgendamentoService from '../services/CreateAgendamentoService';
 
+import verifyAuthenticated from '../middlewares/verifyAuthenticated';
+
 const agendamentoRouter = Router();
 
+agendamentoRouter.use(verifyAuthenticated);
+
 agendamentoRouter.get('/', async (request, response) => {
+  console.log(request.user);
   const agendamentoRepository = getCustomRepository(AgendamentoRepository);
   const listAgendamento = await agendamentoRepository.find();
 
