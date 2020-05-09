@@ -2,6 +2,7 @@ import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
 import Agendamento from '../models/Agendamento';
 import AgendamentoRepository from '../repositories/AgendamentoRepository';
+import AppError from '../errors/AppErrors';
 
 interface RequestDTO {
   date: Date;
@@ -20,7 +21,7 @@ class CreateAgendamentoService {
     const findDate = await agendamentoRepository.findByDate(dataAgendamento);
 
     if (findDate) {
-      throw Error('Este agendamento já esta sendo utilizado');
+      throw new AppError('Este agendamento já esta sendo utilizado');
     }
 
     const agendamento = agendamentoRepository.create({

@@ -3,6 +3,8 @@ import path from 'path';
 import fs from 'fs';
 
 import uploadConfig from '../config/upload';
+import AppError from '../errors/AppErrors';
+
 import User from '../models/User';
 
 interface Request {
@@ -17,7 +19,7 @@ class UpdateUserAvatarService {
     const user = await userRepository.findOne(user_id);
 
     if (!user) {
-      throw new Error('Only authenticated user can change one avatar');
+      throw new AppError('Only authenticated user can change one avatar', 401);
     }
 
     if (user.avatar) {
