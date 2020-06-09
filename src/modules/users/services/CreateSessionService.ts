@@ -2,10 +2,10 @@ import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
-import authConfig from '../config/auth';
-import User from '../models/User';
+import authConfig from '@config/auth';
+import User from '@modules/users/infra/typeorm/entities/User';
 
-import AppError from '../errors/AppErrors';
+import AppError from '@shared/errors/AppErrors';
 
 interface Session {
   email: string;

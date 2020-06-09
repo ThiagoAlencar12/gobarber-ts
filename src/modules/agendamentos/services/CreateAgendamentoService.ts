@@ -1,8 +1,8 @@
 import { startOfHour } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
-import Agendamento from '../models/Agendamento';
-import AgendamentoRepository from '../repositories/AgendamentoRepository';
-import AppError from '../errors/AppErrors';
+import Agendamento from '@modules/agendamentos/infra/typeorm/entities/Agendamento';
+import AppError from '@shared/errors/AppErrors';
+import AgendamentoRepository from '@modules/agendamentos/repositories/AgendamentoRepository';
 
 interface RequestDTO {
   date: Date;

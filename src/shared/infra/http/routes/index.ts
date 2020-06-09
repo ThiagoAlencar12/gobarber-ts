@@ -1,0 +1,12 @@
+import { Router } from 'express';
+import agendamentoRouter from '@modules/agendamentos/infra/http/routes/agendamento.routes';
+import usersRouter from '@modules/users/infra/http/routes/users.routes';
+import sessionsRouter from '@modules/users/infra/http/routes/session.routes';
+
+const routes = Router();
+
+routes.use('/agendamentos', agendamentoRouter);
+routes.use('/users', usersRouter);
+routes.use('/sessions', sessionsRouter);
+
+export default routes;

@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import Agendamento from '../models/Agendamento';
+import Agendamento from '@modules/agendamentos/infra/typeorm/entities/Agendamento';
 
 @EntityRepository(Agendamento)
 class AgendamentoRepository extends Repository<Agendamento> {

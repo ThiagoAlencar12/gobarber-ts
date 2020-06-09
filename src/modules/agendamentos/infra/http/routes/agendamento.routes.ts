@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { parseISO } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
-import AgendamentoRepository from '../repositories/AgendamentoRepository';
-import CreateAgendamentoService from '../services/CreateAgendamentoService';
+import AgendamentoRepository from '@modules/agendamentos/repositories/AgendamentoRepository';
+import CreateAgendamentoService from '@modules/agendamentos/services/CreateAgendamentoService';
 
-import verifyAuthenticated from '../middlewares/verifyAuthenticated';
+import verifyAuthenticated from '@modules/users/infra/http/middlewares/verifyAuthenticated';
 
 const agendamentoRouter = Router();
 
