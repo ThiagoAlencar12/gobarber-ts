@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { startOfHour } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 import Agendamento from '@modules/agendamentos/infra/typeorm/entities/Agendamento';

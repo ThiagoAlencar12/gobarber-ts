@@ -1,7 +1,8 @@
 import AppError from '@shared/errors/AppErrors';
 
-import CreateAgendamentoService from './CreateAgendamentoService';
 import FakeAgendamentoRepository from '../repositories/fakes/FakeAgendamentoRepository';
+
+import CreateAgendamentoService from './CreateAgendamentoService';
 
 describe('CreateAgendamento', () => {
   it('Deve permitir a criação de um novo agendamento', async () => {

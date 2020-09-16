@@ -1,4 +1,3 @@
-import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import { injectable, inject } from 'tsyringe';
@@ -6,7 +5,9 @@ import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppErrors';
 
 import User from '@modules/users/infra/typeorm/entities/User';
+
 import IUsersRepository from '../repositories/IUsersRepository';
+import IHashProvider from '../providers/HashProvider/models/HashInterface';
 
 interface ISession {
   email: string;
@@ -23,6 +24,9 @@ class CreateSessionService {
   constructor(
     @inject('UsersRepository')
     private userRepository: IUsersRepository,
+
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,
   ) {}
 
   public async execute({ email, password }: ISession): Promise<IResponse> {
@@ -32,7 +36,10 @@ class CreateSessionService {
       throw new AppError('Incorrect email/password', 401);
     }
 
-    const passwordExist = await compare(password, user.password);
+    const passwordExist = await this.hashProvider.compareHash(
+      password,
+      user.password,
+    );
 
     if (!passwordExist) {
       throw new AppError('Incorrect email/password', 401);
