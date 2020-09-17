@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 
 import '@modules/users/providers';
+import '@shared/container/providers';
 
 import IAgendamentoRepository from '@modules/agendamentos/repositories/InterfaceAgendamentos';
 import AgendamentoRepository from '@modules/agendamentos/infra/typeorm/repositories/AgendamentoRepository';
